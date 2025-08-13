@@ -3,22 +3,21 @@
 <hr>
 
 <div class="back-content">
-  <div class="definition-row" style="display: flex; align-items: center; gap: 8px;">
+  <div class="item-row">
     {{Definition_Audio}}
     <div class="definition">{{Definition}}</div>
   </div>
 
   <div class="example-container">
     <div class="example-label">Example</div>
-    <div class="example-row" style="display: flex; align-items: center; gap: 8px;">
+    <div class="item-row">
       {{Example_Audio}}
       <div class="example-sentence">{{Example}}</div>
     </div>
   </div>
 
-  <hr>
-
   <div class="chinese-container">
+    <hr>
     <div class="translation definition-zh">
       <b>释义 :</b> {{Definition_ZH}}
     </div>
@@ -27,7 +26,16 @@
     </div>
   </div>
 
-  <button class="toggle-button" onclick="document.querySelector('.chinese-container').classList.toggle('show');">
-    Show/Hide Chinese Content
+  <button class="toggle-button" onclick="
+    const container = document.querySelector('.chinese-container');
+    const arrow = this.querySelector('.arrow');
+    container.classList.toggle('show');
+    if(container.classList.contains('show')) {
+      arrow.textContent = '▲';
+    } else {
+      arrow.textContent = '▼';
+    }
+  ">
+    Show/Hide Chinese Content <span class="arrow">▼</span>
   </button>
 </div>

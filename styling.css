@@ -1,247 +1,309 @@
-/* --- CSS 变量（提高可维护性）--- */
+/*
+  Anki Card Theme for EchoMemo
+  Version: 2.0
+  Author: Gemini
+  Description: A clean, modern, and responsive theme for language learning cards with light and dark modes.
+*/
+
+/* --- 1. CSS Variables (Theme & Layout) --- */
 :root {
-  --font-family-primary: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  /*-- Colors: Light Mode --*/
+  --c-bg: #f9f9f9;
+  --c-text: #333;
+  --c-text-secondary: #777;
+  --c-primary: #1a73e8;
+  --c-secondary: #fbbc05;
+  --c-success: #34a853;
+  --c-divider: #e0e0e0;
+  --c-tag-bg: #fff7d1;
+  --c-tag-text: #fbbc05;
+  --c-button-bg: #4CAF50;
+  --c-button-text: white;
+  --c-button-hover-bg: #45a049;
 
-  --color-primary: #1a73e8;
-  --color-secondary: #fbbc05;
-  --color-success: #34a853;
-  --color-text-primary: #333;
-  --color-text-secondary: #777;
-  --color-background: #f9f9f9;
-  --color-divider: #ccc;
+  /*-- Colors: Night Mode --*/
+  --c-night-bg: #282a36;
+  --c-night-text: #f8f8f2;
+  --c-night-text-secondary: #bd93f9;
+  --c-night-primary: #50fa7b;
+  --c-night-secondary: #ffb86c;
+  --c-night-success: #ff79c6;
+  --c-night-divider: #44475a;
+  --c-night-tag-bg: #ffb86c;
+  --c-night-tag-text: #282a36;
+  --c-night-button-bg: #50fa7b;
+  --c-night-button-text: #282a36;
+  --c-night-button-hover-bg: #4a9d65;
 
-  --night-color-primary: #50fa7b;
-  --night-color-secondary: #ffb86c;
-  --night-color-success: #ff79c6;
-  --night-color-text-primary: #f8f8f2;
-  --night-color-text-secondary: #999;
-  --night-color-background: #282a36;
-  --night-color-divider: #555;
+  /*-- Typography --*/
+  --font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --fs-base: 22px;
+  /* Base font size for the card */
 
-  --button-bg-color: #4CAF50;
-  --button-text-color: white;
-  --button-hover-bg: #45a049;
-  --night-button-bg: #50fa7b;
-  --night-button-text: #282a36;
-  --night-button-hover-bg: #4a9d65;
-  --night-button-hover-text: #f8f8f2;
+  /*-- Layout --*/
+  --card-max-width: 600px;
+  --card-padding: 20px;
+  --card-border-radius: 12px;
 }
 
-/* --- 基础卡片样式 --- */
+/* --- 2. Base Styles --- */
 .card {
-  font-family: var(--font-family-primary);
-  font-size: 22px;
+  font-family: var(--font-family);
+  font-size: var(--fs-base);
   text-align: center;
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
-  padding: 20px;
-  border-radius: 12px;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: var(--card-max-width);
   margin: auto;
-}
-
-.card-content {
-  max-width: 90%;
-  margin: auto;
-}
-
-/* --- header 部分 --- */
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.word {
-  font-size: 2.6em;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.pos-tag {
-  font-size: 1em;
-  font-weight: 600;
-  color: #fbbc05;
-  background-color: #fff7d1;
-  padding: 4px 12px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin-bottom: 8px;
-}
-
-.ipa {
-  font-size: 1em;
-  color: #5f6368;
-}
-
-/* --- 正文部分 --- */
-.definition {
-  text-align: left;
-  font-size: 1.2em;
-  font-weight: 500;
-  color: var(--color-success);
-  margin: 20px 0 10px;
-}
-
-.translation {
-  text-align: left;
-  font-size: 0.9em;
-  color: var(--color-text-secondary);
-  font-style: italic;
-  margin-bottom: 8px;
-}
-
-.example-container {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.example-label {
-  font-size: 1.6em;
-  font-weight: bold;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.example-sentence {
-  font-size: 1.2em;
-  color: var(--color-text-primary);
-  margin-bottom: 6px;
+  box-sizing: border-box;
+  /* Better layout control */
 }
 
 hr {
   border: none;
   height: 1px;
-  background: var(--color-divider);
+  background: var(--c-divider);
   margin: 25px 0;
 }
 
-/* --- 中文内容显示/隐藏 --- */
+/* --- 3. Layout Components --- */
+.card-content,
+.back-content {
+  max-width: 95%;
+  margin: auto;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Align content to the left on the back of the card */
+.back-content .item-row {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* --- 4. Typography & Text Elements --- */
+.word {
+  font-size: 2.6em;
+  font-weight: 700;
+  color: var(--c-primary);
+  margin-bottom: 8px;
+}
+
+.pos-tag {
+  font-size: 0.8em;
+  /* Relative to base */
+  font-weight: 600;
+  color: var(--c-tag-text);
+  background-color: var(--c-tag-bg);
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.ipa {
+  font-size: 1em;
+  color: var(--c-text-secondary);
+}
+
+.ipa b {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.definition {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--c-success);
+}
+
+.example-container {
+  margin-top: 20px;
+}
+
+.example-label {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: var(--c-primary);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.example-sentence {
+  font-size: 1.2em;
+  color: var(--c-text);
+}
+
 .chinese-container {
   display: none;
   margin-top: 15px;
+  text-align: left;
 }
 
 .chinese-container.show {
   display: block;
 }
 
-/* --- 按钮样式 --- */
-.toggle-button {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px 0 20px;
-  /* 合并了 spaced-button 的样式 */
-  font-size: 0.8em !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.translation {
+  font-size: 0.9em;
+  color: var(--c-text-secondary);
+  margin-bottom: 8px;
 }
 
-.toggle-button:hover {
-  background-color: var(--button-hover-bg);
-  color: var(--button-text-color);
-  /* 修正了悬停时的字体颜 */
+.translation b {
+  font-weight: 600;
 }
 
-/* --- 夜间模式 --- */
-.night_mode .card {
-  background-color: var(--night-color-background);
-  color: var(--night-color-text-primary);
-}
+/* --- 5. Interactive Elements --- */
 
-.night_mode .word {
-  color: var(--night-color-primary);
-}
-
-.night_mode .pos-tag {
-  background-color: var(--night-color-secondary);
-  color: var(--night-color-background);
-}
-
-.night_mode .ipa {
-  color: #bd93f9;
-}
-
-.night_mode .definition {
-  color: var(--night-color-success);
-}
-
-.night_mode .translation {
-  color: var(--night-color-text-secondary);
-}
-
-.night_mode .example-label {
-  color: #8be9fd;
-}
-
-.night_mode .example-sentence {
-  color: var(--night-color-text-primary);
-}
-
-.night_mode hr {
-  background: var(--night-color-divider);
-}
-
-.night_mode .toggle-button {
-  background-color: var(--night-button-bg);
-  color: var(--night-button-text);
-}
-
-.night_mode .toggle-button:hover {
-  background-color: var(--night-button-hover-bg);
-  color: var(--night-button-hover-text);
-}
-
-/* --- 响应式设计 --- */
-@media screen and (max-width: 600px) {
-  .card {
-    padding: 10px;
-  }
-
-  .word {
-    font-size: 2em;
-  }
-
-  .ipa {
-    font-size: 1em;
-  }
-
-  .example-label {
-    font-size: 1.2em;
-  }
-}
-
-/* --- 自定义播放按钮 --- */
+/* Custom Play Button */
 .replay-button {
   display: inline-block;
   width: 32px;
   height: 32px;
-  background-color: var(--color-primary);
+  background-color: var(--c-primary);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center;
-  -webkit-mask-size: 24px;
-  mask-size: 24px;
-  vertical-align: middle; /* 垂直居中对齐 */
-  font-size: 0; /* 隐藏原始的播放图标 (一个三角形字符) */
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: middle;
+  font-size: 0;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  /* Prevent button from shrinking */
 }
 
 .replay-button:hover {
-  background-color: var(--color-secondary);
+  background-color: var(--c-secondary);
+}
+
+/* Show/Hide Button */
+.toggle-button {
+  background-color: var(--c-button-bg);
+  color: var(--c-button-text);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px 0;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: var(--c-button-hover-bg);
+}
+
+/* --- 6. Night Mode Theme --- */
+.night_mode .card {
+  background-color: var(--c-night-bg);
+  color: var(--c-night-text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.night_mode hr {
+  background: var(--c-night-divider);
+}
+
+.night_mode .word {
+  color: var(--c-night-primary);
+}
+
+.night_mode .pos-tag {
+  background-color: var(--c-night-tag-bg);
+  color: var(--c-night-tag-text);
+}
+
+.night_mode .ipa {
+  color: var(--c-night-text-secondary);
+}
+
+.night_mode .definition {
+  color: var(--c-night-success);
+}
+
+.night_mode .example-label {
+  color: var(--c-night-secondary);
+}
+
+.night_mode .example-sentence {
+  color: var(--c-night-text);
+}
+
+.night_mode .translation {
+  color: var(--c-night-text-secondary);
 }
 
 .night_mode .replay-button {
-  background-color: var(--night-color-primary);
+  background-color: var(--c-night-primary);
 }
 
 .night_mode .replay-button:hover {
-  background-color: var(--night-color-secondary);
+  background-color: var(--c-night-secondary);
+}
+
+.night_mode .toggle-button {
+  background-color: var(--c-night-button-bg);
+  color: var(--c-night-button-text);
+}
+
+.night_mode .toggle-button:hover {
+  background-color: var(--c-night-button-hover-bg);
+}
+
+/* --- 7. Responsive Design (for Mobile & Tablet) --- */
+
+/* Tablet (e.g., iPad) */
+@media screen and (max-width: 768px) {
+  :root {
+    --fs-base: 20px;
+  }
+
+  .word {
+    font-size: 2.4em;
+  }
+}
+
+/* Mobile (e.g., iPhone) */
+@media screen and (max-width: 480px) {
+  :root {
+    --fs-base: 18px;
+    --card-padding: 15px;
+  }
+
+  .card {
+    padding: var(--card-padding);
+    /* Edge-to-edge on mobile for a modern look */
+    border-radius: 0;
+    min-height: 100vh;
+    /* Ensure card fills the screen height */
+  }
+
+  .word {
+    font-size: 2.2em;
+  }
+
+  .item-row {
+    gap: 6px;
+  }
+
+  .replay-button {
+    width: 28px;
+    height: 28px;
+  }
 }
