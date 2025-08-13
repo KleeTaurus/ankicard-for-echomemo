@@ -1,0 +1,214 @@
+/* --- CSS 变量（提高可维护性）--- */
+:root {
+  --font-family-primary: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  
+  --color-primary: #1a73e8;
+  --color-secondary: #fbbc05;
+  --color-success: #34a853;
+  --color-text-primary: #333;
+  --color-text-secondary: #777;
+  --color-background: #f9f9f9;
+  --color-divider: #ccc;
+
+  --night-color-primary: #50fa7b;
+  --night-color-secondary: #ffb86c;
+  --night-color-success: #ff79c6;
+  --night-color-text-primary: #f8f8f2;
+  --night-color-text-secondary: #999;
+  --night-color-background: #282a36;
+  --night-color-divider: #555;
+  
+  --button-bg-color: #4CAF50;
+  --button-text-color: white;
+  --button-hover-bg: #45a049;
+  --night-button-bg: #50fa7b;
+  --night-button-text: #282a36;
+  --night-button-hover-bg: #4a9d65;
+  --night-button-hover-text: #f8f8f2;
+}
+
+/* --- 基础卡片样式 --- */
+.card {
+  font-family: var(--font-family-primary);
+  font-size: 22px;
+  text-align: center;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+.card-content {
+  max-width: 90%;
+  margin: auto;
+}
+
+/* --- header 部分 --- */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.word {
+  font-size: 2.6em;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.pos-tag {
+  font-size: 1em;
+  font-weight: 600;
+  color: #fbbc05;
+  background-color: #fff7d1;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+
+.ipa {
+  font-size: 1em;
+  color: #5f6368;
+}
+
+/* --- 正文部分 --- */
+.definition {
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--color-success);
+  margin: 20px 0 10px;
+}
+
+.translation {
+  text-align: left;
+  font-size: 0.9em;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.example-container {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.example-label {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.example-sentence {
+  font-size: 1.2em;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--color-divider);
+  margin: 25px 0;
+}
+
+/* --- 中文内容显示/隐藏 --- */
+.chinese-content {
+  display: none;
+  margin-top: 15px;
+}
+
+.chinese-content.show {
+  display: block;
+}
+
+/* --- 按钮样式 --- */
+.toggle-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0 20px; /* 合并了 spaced-button 的样式 */
+  font-size: 0.8em !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--button-text-color); /* 修正了悬停时的字体颜 */
+}
+
+/* --- 夜间模式 --- */
+.night_mode .card {
+  background-color: var(--night-color-background);
+  color: var(--night-color-text-primary);
+}
+
+.night_mode .word {
+  color: var(--night-color-primary);
+}
+
+.night_mode .pos-tag {
+  background-color: var(--night-color-secondary);
+  color: var(--night-color-background);
+}
+
+.night_mode .ipa {
+  color: #bd93f9;
+}
+
+.night_mode .definition {
+  color: var(--night-color-success);
+}
+
+.night_mode .translation {
+  color: var(--night-color-text-secondary);
+}
+
+.night_mode .example-label {
+  color: #8be9fd;
+}
+
+.night_mode .example-sentence {
+  color: var(--night-color-text-primary);
+}
+
+.night_mode hr {
+  background: var(--night-color-divider);
+}
+
+.night_mode .toggle-button {
+  background-color: var(--night-button-bg);
+  color: var(--night-button-text);
+}
+
+.night_mode .toggle-button:hover {
+  background-color: var(--night-button-hover-bg);
+  color: var(--night-button-hover-text);
+}
+
+/* --- 响应式设计 --- */
+@media screen and (max-width: 600px) {
+  .card {
+    padding: 10px;
+  }
+  .word {
+    font-size: 2em;
+  }
+  .ipa {
+    font-size: 1em;
+  }
+  .example-label {
+    font-size: 1.2em;
+  }
+}
