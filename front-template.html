@@ -1,12 +1,13 @@
 <div class="card-content">
   <div class="header">
-    <div class="word">{{Word}}</div>
+    <div class="word-row" style="display: flex; align-items: center; gap: 8px;">
+      {{Word_Audio}}
+      <div class="word">{{Word}}</div>
+    </div>
     <div class="pos-tag">{{Part_of_Speech}}</div>
     <div class="ipa">
       <b>UK</b> {{IPA_UK}}
       <b>US</b> {{IPA_US}}
     </div>
   </div>
-
-  {{Word_Audio}}
 </div>
