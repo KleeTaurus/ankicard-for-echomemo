@@ -1,7 +1,7 @@
 /* --- CSS 变量（提高可维护性）--- */
 :root {
   --font-family-primary: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  
+
   --color-primary: #1a73e8;
   --color-secondary: #fbbc05;
   --color-success: #34a853;
@@ -17,7 +17,7 @@
   --night-color-text-secondary: #999;
   --night-color-background: #282a36;
   --night-color-divider: #555;
-  
+
   --button-bg-color: #4CAF50;
   --button-text-color: white;
   --button-hover-bg: #45a049;
@@ -36,7 +36,7 @@
   color: var(--color-text-primary);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: auto;
 }
@@ -96,8 +96,8 @@
 }
 
 .example-container {
-  margin-top: 20px;
   text-align: left;
+  margin-top: 20px;
 }
 
 .example-label {
@@ -121,12 +121,12 @@ hr {
 }
 
 /* --- 中文内容显示/隐藏 --- */
-.chinese-content {
+.chinese-container {
   display: none;
   margin-top: 15px;
 }
 
-.chinese-content.show {
+.chinese-container.show {
   display: block;
 }
 
@@ -138,14 +138,16 @@ hr {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 10px 0 20px; /* 合并了 spaced-button 的样式 */
+  margin: 10px 0 20px;
+  /* 合并了 spaced-button 的样式 */
   font-size: 0.8em !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .toggle-button:hover {
   background-color: var(--button-hover-bg);
-  color: var(--button-text-color); /* 修正了悬停时的字体颜 */
+  color: var(--button-text-color);
+  /* 修正了悬停时的字体颜 */
 }
 
 /* --- 夜间模式 --- */
@@ -202,12 +204,15 @@ hr {
   .card {
     padding: 10px;
   }
+
   .word {
     font-size: 2em;
   }
+
   .ipa {
     font-size: 1em;
   }
+
   .example-label {
     font-size: 1.2em;
   }

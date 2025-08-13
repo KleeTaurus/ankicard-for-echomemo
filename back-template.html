@@ -3,24 +3,26 @@
     <div class="word">{{Word}}</div>
     <div class="pos-tag">{{Part_of_Speech}}</div>
     <div class="ipa">
-      <b>UK</b> {{IPA_UK}} <b>US</b> {{IPA_US}}
+      <b>UK</b> {{IPA_UK}}
+      <b>US</b> {{IPA_US}}
     </div>
   </div>
 </div>
 
 <div class="back-content">
-  <hr>
-
   <div class="definition">{{Definition}}</div>
-  
+
   <div class="example-container">
     <div class="example-label">Example</div>
     <div class="example-sentence">{{Example}}</div>
   </div>
 
-  <hr>
+  <div class="audio-container">
+    {{Definition_Audio}}
+    {{Example_Audio}}
+  </div>
 
-  <div class="chinese-content">
+  <div class="chinese-container">
     <div class="translation definition-zh">
       <b>释义 :</b> {{Definition_ZH}}
     </div>
@@ -29,12 +31,7 @@
     </div>
   </div>
 
-  <button class="toggle-button" onclick="document.querySelector('.chinese-content').classList.toggle('show');">
+  <button class="toggle-button" onclick="document.querySelector('.chinese-container').classList.toggle('show');">
     Show/Hide Chinese Content
   </button>
-
-	<div class="audio-container">
-    {{Definition_Audio}}
-    {{Example_Audio}}
-	</div>
 </div>
