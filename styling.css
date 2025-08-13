@@ -217,3 +217,31 @@ hr {
     font-size: 1.2em;
   }
 }
+
+/* --- 自定义播放按钮 --- */
+.replay-button {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: 24px;
+  mask-size: 24px;
+  vertical-align: middle; /* 垂直居中对齐 */
+  font-size: 0; /* 隐藏原始的播放图标 (一个三角形字符) */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.replay-button:hover {
+  background-color: var(--color-secondary);
+}
+
+.night_mode .replay-button {
+  background-color: var(--night-color-primary);
+}
+
+.night_mode .replay-button:hover {
+  background-color: var(--night-color-secondary);
+}
