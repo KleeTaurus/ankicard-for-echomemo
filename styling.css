@@ -170,17 +170,51 @@ hr {
 
 /* --- 5. Interactive Elements --- */
 
+/* Dictionary Container & Buttons */
+.dictionary-container {
+  margin-top: 0px;
+}
+
+.dictionary-label {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: var(--c-primary);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.dictionary-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dict-button {
+  background-color: var(--c-primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.dict-button:hover {
+  background-color: #0d5bbc;
+}
 
 /* Show/Hide Button */
 .toggle-button {
   background-color: var(--c-button-bg);
   color: var(--c-button-text);
-  padding: 10px 20px;
+  padding: 8px 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px !important;
   cursor: pointer;
   margin: 20px 0;
-  font-size: 0.8em;
+  font-size: 0.8em !important;
+  font-weight: 600;
   transition: background-color 0.3s ease;
 }
 
@@ -226,6 +260,19 @@ hr {
 
 .night_mode .translation {
   color: var(--c-night-text-secondary);
+}
+
+.night_mode .dictionary-label {
+  color: var(--c-night-secondary);
+}
+
+.night_mode .dict-button {
+  background-color: var(--c-night-button-bg);
+  color: var(--c-night-button-text);
+}
+
+.night_mode .dict-button:hover {
+  background-color: var(--c-night-button-hover-bg);
 }
 
 .night_mode .toggle-button {
