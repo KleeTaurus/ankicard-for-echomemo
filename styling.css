@@ -37,7 +37,7 @@
 
   /*-- Typography --*/
   --font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --fs-base: 22px;
+  --fs-base: 28px;
   /* Base font size for the card */
 
   /*-- Layout --*/
@@ -289,7 +289,7 @@ hr {
 /* Tablet (e.g., iPad) */
 @media screen and (max-width: 768px) {
   :root {
-    --fs-base: 20px;
+    --fs-base: 22px;
   }
 
   .word {
