@@ -3,57 +3,61 @@
 <hr>
 
 <div class="back-content">
-  <div class="item-row">
-    {{Definition_Audio}}
-    <div class="definition">{{Definition}}</div>
-  </div>
-
-  <div class="example-container">
-    <div class="example-label">Example</div>
+  <div class="card__content-inner">
     <div class="item-row">
-      {{Example_Audio}}
-      <div class="example-sentence">{{Example}}</div>
+      {{Definition_Audio}}
+      <div class="definition">{{Definition}}</div>
+    </div>
+
+    <div class="example-container">
+      <div class="example-label">Example</div>
+      <div class="item-row">
+        {{Example_Audio}}
+        <div class="example-sentence">{{Example}}</div>
+      </div>
+    </div>
+
+    <div class="chinese-container">
+      <hr>
+      <div class="translation definition-zh">
+        <b>释义 :</b> {{Definition_ZH}}
+      </div>
+      <div class="translation example-zh">
+        <b>示例 :</b> {{Example_ZH}}
+      </div>
     </div>
   </div>
 
-  <div class="chinese-container">
-    <hr>
-    <div class="translation definition-zh">
-      <b>释义 :</b> {{Definition_ZH}}
-    </div>
-    <div class="translation example-zh">
-      <b>示例 :</b> {{Example_ZH}}
-    </div>
-  </div>
+  <div class="action-buttons-group">
+    <button class="toggle-button" onclick="
+      const container = document.querySelector('.chinese-container');
+      const arrow = this.querySelector('.arrow');
+      container.classList.toggle('show');
+      if(container.classList.contains('show')) {
+        arrow.textContent = '▲';
+      } else {
+        arrow.textContent = '▼';
+      }
+    ">
+      显示/隐藏中文 <span class="arrow">▼</span>
+    </button>
 
-  <button class="toggle-button" onclick="
-    const container = document.querySelector('.chinese-container');
-    const arrow = this.querySelector('.arrow');
-    container.classList.toggle('show');
-    if(container.classList.contains('show')) {
-      arrow.textContent = '▲';
-    } else {
-      arrow.textContent = '▼';
-    }
-  ">
-    Show/Hide Chinese Content <span class="arrow">▼</span>
-  </button>
-
-  <div class="dictionary-container">
-    <div class="dictionary-label">Online Dictionary</div>
-    <div class="dictionary-buttons">
-      <a href="https://dictionary.cambridge.org/dictionary/english/{{Word}}" target="_blank" class="dict-button">
-        Cambridge
-      </a>
-      <a href="https://www.ldoceonline.com/dictionary/{{Word}}" target="_blank" class="dict-button">
-        Longman
-      </a>
-      <a href="https://www.iciba.com/word?w={{Word}}" target="_blank" class="dict-button">
-        iCIBA
-      </a>
-      <a href="https://www.youdao.com/result?word={{Word}}&lang=en" target="_blank" class="dict-button">
-        Youdao
-      </a>
+    <div class="dictionary-container">
+      <div class="dictionary-buttons">
+        <a href="https://dictionary.cambridge.org/dictionary/english/{{Word}}" target="_blank"
+          class="dict-button cambridge">
+          剑桥
+        </a>
+        <a href="https://www.ldoceonline.com/dictionary/{{Word}}" target="_blank" class="dict-button longman">
+          朗文
+        </a>
+        <a href="https://www.iciba.com/word?w={{Word}}" target="_blank" class="dict-button iciba">
+          金山词霸
+        </a>
+        <a href="https://www.youdao.com/result?word={{Word}}&lang=en" target="_blank" class="dict-button youdao">
+          有道
+        </a>
+      </div>
     </div>
   </div>
 </div>

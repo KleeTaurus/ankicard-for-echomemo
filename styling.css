@@ -1,6 +1,6 @@
 /*
   Anki Card Theme for EchoMemo
-  Version: 2.0
+  Version: 2.6
   Author: Gemini
   Description: A clean, modern, and responsive theme for language learning cards with light and dark modes.
 */
@@ -20,6 +20,9 @@
   --c-button-bg: #4CAF50;
   --c-button-text: white;
   --c-button-hover-bg: #45a049;
+  --c-toggle-button-bg: #e9e9e9;
+  --c-toggle-button-text: #555;
+  --c-toggle-button-hover-bg: #d9d9d9;
 
   /*-- Colors: Night Mode --*/
   --c-night-bg: #282a36;
@@ -34,6 +37,9 @@
   --c-night-button-bg: #50fa7b;
   --c-night-button-text: #282a36;
   --c-night-button-hover-bg: #4a9d65;
+  --c-night-toggle-button-bg: #44475a;
+  --c-night-toggle-button-text: #f8f8f2;
+  --c-night-toggle-button-hover-bg: #55596b;
 
   /*-- Typography --*/
   --font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -59,7 +65,6 @@
   max-width: var(--card-max-width);
   margin: auto;
   box-sizing: border-box;
-  /* Better layout control */
 }
 
 hr {
@@ -70,8 +75,7 @@ hr {
 }
 
 /* --- 3. Layout Components --- */
-.card-content,
-.back-content {
+.card-content {
   max-width: 95%;
   margin: auto;
 }
@@ -103,7 +107,6 @@ hr {
 
 .pos-tag {
   font-size: 0.8em;
-  /* Relative to base */
   font-weight: 600;
   color: var(--c-tag-text);
   background-color: var(--c-tag-bg);
@@ -111,7 +114,6 @@ hr {
   border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  margin-bottom: 8px;
   display: inline-block;
 }
 
@@ -169,22 +171,23 @@ hr {
 }
 
 /* --- 5. Interactive Elements --- */
-
-/* Dictionary Container & Buttons */
-.dictionary-container {
-  margin-top: 0px;
+.action-buttons-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
 }
 
-.dictionary-label {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: var(--c-primary);
-  margin-bottom: 8px;
-  text-align: left;
+.dictionary-container {
+  padding-top: 20px;
+  /* 增加与上方按钮的间距 */
+  text-align: center;
 }
 
 .dictionary-buttons {
   display: flex;
+  flex-wrap: wrap;
+  /* 允许按钮在小屏上换行 */
   gap: 10px;
   justify-content: center;
 }
@@ -197,29 +200,32 @@ hr {
   text-decoration: none;
   font-size: 0.8em;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dict-button:hover {
   background-color: #0d5bbc;
+  transform: translateY(-2px);
 }
 
-/* Show/Hide Button */
+/* Style for the "Show/Hide Chinese" button */
 .toggle-button {
-  background-color: var(--c-button-bg);
-  color: var(--c-button-text);
+  background-color: var(--c-toggle-button-bg);
+  color: var(--c-toggle-button-text);
   padding: 8px 14px;
   border: none;
   border-radius: 5px !important;
   cursor: pointer;
-  margin: 20px 0;
   font-size: 0.8em !important;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .toggle-button:hover {
-  background-color: var(--c-button-hover-bg);
+  background-color: var(--c-toggle-button-hover-bg);
+  transform: translateY(-2px);
 }
 
 /* --- 6. Night Mode Theme --- */
@@ -262,13 +268,15 @@ hr {
   color: var(--c-night-text-secondary);
 }
 
-.night_mode .dictionary-label {
-  color: var(--c-night-secondary);
+.night_mode .dictionary-container {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .night_mode .dict-button {
   background-color: var(--c-night-button-bg);
   color: var(--c-night-button-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .night_mode .dict-button:hover {
@@ -276,20 +284,19 @@ hr {
 }
 
 .night_mode .toggle-button {
-  background-color: var(--c-night-button-bg);
-  color: var(--c-night-button-text);
+  background-color: var(--c-night-toggle-button-bg);
+  color: var(--c-night-toggle-button-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .night_mode .toggle-button:hover {
-  background-color: var(--c-night-button-hover-bg);
+  background-color: var(--c-night-toggle-button-hover-bg);
 }
 
 /* --- 7. Responsive Design (for Mobile & Tablet) --- */
-
-/* Tablet (e.g., iPad) */
 @media screen and (max-width: 768px) {
   :root {
-    --fs-base: 22px;
+    --fs-base: 24px;
   }
 
   .word {
@@ -297,19 +304,15 @@ hr {
   }
 }
 
-/* Mobile (e.g., iPhone) */
 @media screen and (max-width: 480px) {
   :root {
-    --fs-base: 18px;
+    --fs-base: 22px;
     --card-padding: 15px;
   }
 
   .card {
     padding: var(--card-padding);
-    /* Edge-to-edge on mobile for a modern look */
     border-radius: 0;
-    min-height: 100vh;
-    /* Ensure card fills the screen height */
   }
 
   .word {
