@@ -43,11 +43,11 @@
 
   /*-- Typography --*/
   --font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --fs-base: 28px;
+  --fs-base: 24px;
   /* Base font size for the card */
 
   /*-- Layout --*/
-  --card-max-width: 600px;
+  --card-max-width: 700px;
   --card-padding: 20px;
   --card-border-radius: 12px;
 }
@@ -306,7 +306,7 @@ hr {
 
 @media screen and (max-width: 480px) {
   :root {
-    --fs-base: 22px;
+    --fs-base: 20px;
     --card-padding: 15px;
   }
 
